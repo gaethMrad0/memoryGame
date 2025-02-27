@@ -12,14 +12,10 @@ function Blocks() {
   const dispatch = useDispatch();
 
   const flippedBlock = (index) => {
-    for (let i = 0; i < blocks.current.length; i++) {
-      if (!blocks.current[i].classList.contains("is-flipped")) {
-        setFlipped((prev) => [...prev, blocks.current[index]]);
+    setFlipped((prev) => [...prev, blocks.current[index]]);
     setTimeout(() => {
       blocks.current[index].classList.add("is-flipped")
     }, duration)
-      }
-    }
   }
 
   useEffect(() => {
@@ -29,7 +25,7 @@ function Blocks() {
   useEffect(() => {
     if (flipped.length === 2) {
       setTimeout(() => {
-        if (flipped[0].dataset.name != flipped[1].dataset.name) {
+        if (flipped[0].dataset.name != flipped[1].dataset.name || (flipped[0].dataset.name != flipped[1].dataset.name && !(flipped[0] || flipped[1]).classList.contains("is-flipped"))) {
           dispatch(increment());
           flipped.forEach(ele => {
             ele.classList.remove("is-flipped")

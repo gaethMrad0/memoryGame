@@ -24,17 +24,17 @@ function Blocks() {
 
   useEffect(() => {
     if (flipped.length === 2) {
-      setTimeout(() => {
-        if (flipped[0].dataset.name != flipped[1].dataset.name || (flipped[0].dataset.name != flipped[1].dataset.name && !(flipped[0] || flipped[1]).classList.contains("is-flipped"))) {
-          dispatch(increment());
+      if (flipped[0].dataset.name != flipped[1].dataset.name || (flipped[0].dataset.name != flipped[1].dataset.name && !(flipped[0] || flipped[1]).classList.contains("is-flipped"))) {
+        dispatch(increment());
+        setTimeout(() => {
           flipped.forEach(ele => {
             ele.classList.remove("is-flipped")
           })
-        } else {
-          dispatch(setCorrectBlocks(flipped))
-        }
-        setFlipped([]);
-      }, 500)
+          setFlipped([])
+        }, 500)
+      } else {
+        dispatch(setCorrectBlocks(flipped))
+      }
     }
   }, [dispatch, flipped])
 

@@ -34,7 +34,7 @@ function Blocks() {
           dispatch(setCorrectBlocks(flipped))
         }
         setFlipped([]);
-      }, 100)
+      }, 500)
     }
   }, [dispatch, flipped])
 

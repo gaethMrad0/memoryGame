@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     orderRange: [...Array(20).keys()],
-    duration: 100,
+    duration: 500,
     correctBlocks: [],
 };
 

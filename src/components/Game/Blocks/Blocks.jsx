@@ -13,9 +13,11 @@ function Blocks() {
 
   const flippedBlock = (index) => {
     setFlipped((prev) => [...prev, blocks.current[index]]);
-    setTimeout(() => {
-      blocks.current[index].classList.add("is-flipped")
-    }, duration)
+    if (flipped.length != 2) {
+      setTimeout(() => {
+        blocks.current[index].classList.add("is-flipped")
+      }, duration)
+    }
   }
 
   useEffect(() => {

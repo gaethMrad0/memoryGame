@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+.block.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+    cursor: not-allowed;
+}

@@ -8,16 +8,17 @@ import { increment } from "../NavBarInfo/WrongCounter/counterSlice";
 function Blocks() {
   const {orderRange, duration} = useSelector((store) => store.block);
   const [flipped, setFlipped] = useState([]);
-  const [isFlipped, setIsFlipped] = useState(false)
   const blocks = useRef([]);
   const dispatch = useDispatch();
 
   const flippedBlock = (index) => {
-    setFlipped((prev) => [...prev, blocks.current[index]]);
-    if (isFlipped) {
-      setTimeout(() => {
-        blocks.current[index].classList.add("is-flipped")
-      }, duration)
+    for (let i = 0; i < blocks.current.length; i++) {
+      if (!blocks.current[i].classList.contains("is-flipped")) {
+        setFlipped((prev) => [...prev, blocks.current[index]]);
+    setTimeout(() => {
+      blocks.current[index].classList.add("is-flipped")
+    }, duration)
+      }
     }
   }
 
@@ -32,7 +33,6 @@ function Blocks() {
           dispatch(increment());
           flipped.forEach(ele => {
             ele.classList.remove("is-flipped")
-            setIsFlipped(!isFlipped)
           })
         } else {
           dispatch(setCorrectBlocks(flipped))
@@ -40,7 +40,7 @@ function Blocks() {
         setFlipped([]);
       }, 500)
     }
-  }, [dispatch, flipped, isFlipped])
+  }, [dispatch, flipped])
 
   return (
     <div className="blocks grid mb-[20px] grid-cols-2 gap-[10px] md:grid-cols-5">

@@ -32,10 +32,11 @@ function Blocks() {
           flipped.forEach(ele => {
             ele.classList.remove("is-flipped")
           })
-          setFlipped([])
         }, 500)
+        setFlipped([])
       } else {
         dispatch(setCorrectBlocks(flipped))
+        setFlipped([])
       }
     }
   }, [dispatch, flipped])
